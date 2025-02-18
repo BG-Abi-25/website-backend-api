@@ -1,0 +1,16 @@
+openapi: 3.0.3
+info:
+  title: Backend API
+  version: 1.0.0
+paths:
+  /hello:
+    get:
+      summary: Hello World Request
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "Hello, World!"
