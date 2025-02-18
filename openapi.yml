@@ -3,6 +3,9 @@ info:
   title: Backend API
   version: 1.0.0
 paths:
+  /blogs:
+    get:
+      summary: Get all blog entries
   /hello:
     get:
       summary: Hello World Request
