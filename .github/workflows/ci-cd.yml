@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   tests:
     name: Test Project
