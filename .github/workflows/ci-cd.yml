@@ -14,11 +14,12 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: 21
+          distribution: oracle
       - name: Cache Maven packages
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -32,14 +33,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Set up JDK
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: 21
+          distribution: oracle
       - name: Cache Maven packages
         #This action allows caching dependencies and build outputs to improve workflow execution time.
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
@@ -47,14 +49,14 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -DskipTests --file pom.xml
       - name: Upload JAR
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: artifact
           path: target/backend-api.jar
 
   push:
     name: Push Image to Docker Registry
-		needs: tests
+    needs: tests
     runs-on: ubuntu-latest
         
     steps:
@@ -79,23 +81,23 @@ jobs:
           tags: |
             ${{ secrets.REGISTRY_URL }}/informatik-projekt/website-backend-api:latest
        
-	deploy:
-		name: Deploy to Docker Instance
-		needs: push
-		runs-on: ubuntu-latest
+  deploy:
+    name: Deploy to Docker Instance
+    needs: push
+    runs-on: ubuntu-latest
 					
-		steps:
-			- name: Deploy to VPS
-				uses: appleboy/ssh-action@master
-				with:
-					host: ${{ secrets.DEPLOY_HOST }}
-					username: ${{ secrets.DEPLOY_USERNAME }}
-					key: ${{ secrets.DEPLOY_KEY }}
-					script: |
-						echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ secrets.REGISTRY_URL }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
-						cd ./informatik-projekt/website-backend-api/
-						docker compose down --rmi all
-						docker compose stop
-						docker compose rm -f
-						docker compose pull
-						docker compose up -d
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          script: |
+            echo "${{ secrets.REGISTRY_PASSWORD }}" | docker login ${{ secrets.REGISTRY_URL }} -u ${{ secrets.REGISTRY_USERNAME }} --password-stdin
+            cd ./informatik-projekt/website-backend-api/
+            docker compose down --rmi all
+            docker compose stop
+            docker compose rm -f
+            docker compose pull
+            docker compose up -d
