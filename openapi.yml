@@ -6,14 +6,22 @@ paths:
   /blogs:
     get:
       summary: Get all blog entries
-  /hello:
-    get:
-      summary: Hello World Request
       responses:
         "200":
           description: OK
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
-                example: "Hello, World!"
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: "Hello, World!"
+                    content:
+                      type: string
+                      example: "This is a blog post."
