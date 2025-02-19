@@ -41,7 +41,6 @@ jobs:
           java-version: 21
           distribution: oracle
       - name: Cache Maven packages
-        #This action allows caching dependencies and build outputs to improve workflow execution time.
         uses: actions/cache@v4
         with:
           path: ~/.m2
@@ -53,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: target/backend-api.jar
+          path: '${{ github.workspace }}/target/backend-api.jar'
 
   push:
     name: Push Image to Docker Registry
