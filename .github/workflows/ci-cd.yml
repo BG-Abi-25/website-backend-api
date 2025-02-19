@@ -57,7 +57,7 @@ jobs:
 
   push:
     name: Push Image to Docker Registry
-    needs: tests
+    needs: build
     runs-on: ubuntu-latest
         
     steps:
