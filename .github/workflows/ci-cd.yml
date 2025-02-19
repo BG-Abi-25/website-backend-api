@@ -80,13 +80,12 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.REGISTRY_URL }}/informatik-projekt/website-backend-api:latest
-       
+            ${{ secrets.REGISTRY_URL }}/informatik-projekt/website-backend-api:latest  
   deploy:
     name: Deploy to Docker Instance
     needs: push
     runs-on: ubuntu-latest
-					
+	
     steps:
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
