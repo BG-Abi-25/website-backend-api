@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>tech.informatik-projekt</groupId>
 	<artifactId>api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>API</name>
-	<description>Die Backend API für das Informatik-Projekt</description>
+	<version>0.0.1</version>
+	<name>Backend-API</name>
+	<description>Die Backend-API der Website, die im Zuge des Projektes im Informatik-LK des Abitur-Jahrgangs 2025 am Burg-Gymnasium Schorndorf entwickelt wird</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>21</java.version>
 	</properties>
+	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -52,6 +53,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>backend-api</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.asciidoctor</groupId>

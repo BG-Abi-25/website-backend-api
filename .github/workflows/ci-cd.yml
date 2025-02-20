@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: '${{ github.workspace }}/target/backend-api.jar'
+          path: target/backend-api.jar
 
   push:
     name: Push Image to Docker Registry
