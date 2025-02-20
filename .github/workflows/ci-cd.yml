@@ -60,9 +60,10 @@ jobs:
     runs-on: ubuntu-latest
         
     steps:
-      - name: Checkout the source code
-        uses: actions/checkout@v4
-
+      - name: Download JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact
       - name: Login to Docker Registry
         uses: docker/login-action@v3
         with:
