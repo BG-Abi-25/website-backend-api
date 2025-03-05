@@ -132,6 +132,11 @@ components:
           type: string
           description: URL to the image
           example: https://example.com/image.jpg
+        tags:
+          type: array
+          items:
+            type: string
+          example: [ "vortrag", "schulleitung" ]
       xml:
         name: blogPost
     Event:
