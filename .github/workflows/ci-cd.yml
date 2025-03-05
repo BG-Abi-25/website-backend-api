@@ -102,5 +102,8 @@ jobs:
             docker compose down --rmi all
             docker compose stop
             docker compose rm -f
+            export MONGO_URI=${{ secrets.MONGO_URI }}
+            export MONGO_USERNAME=${{ secrets.MONGO_USERNAME }}
+            export MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}
             docker compose pull
             docker compose up -d
