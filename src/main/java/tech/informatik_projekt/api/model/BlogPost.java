@@ -11,12 +11,12 @@ public class BlogPost {
 
     @Id
     private int id;
-    private String title;
-    private String content;
-    private String author;
-    private String creationDate;
-    private String imageUrl;
-    private String[] tags;
+    private final String title;
+    private final String content;
+    private final String author;
+    private final String creationDate;
+    private final String imageUrl;
+    private final String[] tags;
 
     public BlogPost(int id, String title, String content, String author, String creationDate, String imageUrl, String[] tags) {
         super();

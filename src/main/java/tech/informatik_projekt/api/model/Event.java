@@ -11,11 +11,11 @@ public class Event {
 
     @Id
     private int id;
-    private String title;
-    private String description;
-    private String fromDateTime;
-    private String toDateTime;
-    private boolean allDay;
+    private final String title;
+    private final String description;
+    private final String fromDateTime;
+    private final String toDateTime;
+    private final boolean allDay;
 
     public Event(int id, String title, String description, String fromDateTime, String toDateTime, boolean allDay) {
         super();

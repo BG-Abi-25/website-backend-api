@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tech.informatik_projekt.api.model.BlogPost;
 import tech.informatik_projekt.api.model.Event;
-import tech.informatik_projekt.api.repository.BlogPostRepository;
 import tech.informatik_projekt.api.repository.EventRepository;
 
 import java.util.List;
