@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>tech.informatik-projekt</groupId>
 	<artifactId>api</artifactId>
-	<version>0.0.1</version>
-	<name>Backend-API</name>
+	<version>1.0.0</version>
+	<name>Website-API</name>
 	<description>Die Backend-API der Website, die im Zuge des Projektes im Informatik-LK des Abitur-Jahrgangs 2025 am Burg-Gymnasium Schorndorf entwickelt wird</description>
 	<url/>
 	<licenses>
