@@ -2,7 +2,6 @@ package tech.informatik_projekt.api.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import tech.informatik_projekt.api.model.BlogPost;
 import tech.informatik_projekt.api.model.Event;
 
 import java.util.List;
