@@ -154,5 +154,7 @@ components:
         toDateTime:
           type: string
           format: date-time
+        allDay:
+          type: boolean
       xml:
         name: event
