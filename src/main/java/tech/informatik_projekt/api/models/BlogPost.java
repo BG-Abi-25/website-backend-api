@@ -2,7 +2,6 @@ package tech.informatik_projekt.api.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 /**
  * @author <a href="https://github.com/zpiste">Piste</a>

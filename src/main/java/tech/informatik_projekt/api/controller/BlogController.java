@@ -35,6 +35,7 @@ public class BlogController {
         if (blogPost == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        System.out.println("Returning blog post: " + blogPost);
         return new ResponseEntity<>(blogPost, HttpStatus.OK);
     }
 
