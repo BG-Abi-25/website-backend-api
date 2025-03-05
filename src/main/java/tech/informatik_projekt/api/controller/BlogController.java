@@ -20,7 +20,7 @@ public class BlogController {
     @Autowired
     private BlogPostRepository blogPostRepository;
 
-    @GetMapping("/blog/post")
+    @GetMapping("/v1/blog/post")
     public ResponseEntity<List<BlogPost>> getBlogPosts() {
         List<BlogPost> blogPosts = blogPostRepository.findAll();
         if (blogPosts.isEmpty()) {
@@ -29,7 +29,7 @@ public class BlogController {
         return new ResponseEntity<>(blogPosts, HttpStatus.OK);
     }
 
-    @GetMapping("/blog/post/{postId}")
+    @GetMapping("/v1/blog/post/{postId}")
     public ResponseEntity<BlogPost> getBlogPostById(@PathVariable int postId) {
         BlogPost blogPost = blogPostRepository.findById(postId);
         if (blogPost == null) {
