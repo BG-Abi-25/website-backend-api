@@ -16,8 +16,9 @@ public class BlogPost {
     private String author;
     private String creationDate;
     private String imageUrl;
+    private String[] tags;
 
-    public BlogPost(int id, String title, String content, String author, String creationDate, String imageUrl) {
+    public BlogPost(int id, String title, String content, String author, String creationDate, String imageUrl, String[] tags) {
         super();
         this.id = id;
         this.title = title;
@@ -25,6 +26,7 @@ public class BlogPost {
         this.author = author;
         this.creationDate = creationDate;
         this.imageUrl = imageUrl;
+        this.tags = tags;
     }
 
     public int getId() {
@@ -49,6 +51,10 @@ public class BlogPost {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public String[] getTags() {
+        return tags;
     }
 
 }
