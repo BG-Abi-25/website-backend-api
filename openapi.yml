@@ -1,11 +1,21 @@
-openapi: 3.0.3
+openapi: 3.1.1
 info:
-  title: Backend API
+  title: Website-API
   version: 1.0.0
+servers:
+  - url: https://api.informatik-projekt.tech/v1
+tags:
+  - name: blog
+    description: All operations about blog posts
+  - name: calendar
+    description: All operations about the calendar
 paths:
-  /blogs:
+  /blog/post:
     get:
-      summary: Get all blog entries
+      tags:
+        - blog
+      summary: Get all blog posts
+      description: Retrieve a list of all blog posts
       responses:
         "200":
           description: OK
@@ -14,14 +24,84 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                      example: 1
-                    title:
-                      type: string
-                      example: "Hello, World!"
-                    content:
-                      type: string
-                      example: "This is a blog post."
+                  $ref: '#/components/schemas/BlogPost'
+        "404":
+          description: No blog posts found
+
+  /blog/post/{postId}:
+    summary: Get a specific blog post
+    description: Retrieve a specific blog post by its ID
+    parameters:
+      - name: id
+        in: path
+        description: The corresponding ID of the blog post
+        required: true
+        schema:
+          type: integer
+          format: int64
+    get:
+      tags:
+        - blog
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPost'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Blog post not found
+
+components:
+  schemas:
+    BlogPost:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 187
+        title:
+          type: string
+          description: Blog Post Title
+          example: Tag der offenen Tür
+        content:
+          type: string
+          description: Blog Post Content
+        author:
+          type: string
+          description: Blog Post Author
+          example: John Pork
+        dateCreated:
+          type: string
+          format: date-time
+        imageUrl:
+          type: string
+          description: URL to the image
+          example: https://example.com/image.jpg
+      xml:
+        name: blogPost
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 187
+        title:
+          type: string
+          description: Event Title
+          example: Tag der offenen Tür
+        description:
+          type: string
+          description: Event Description
+        fromDateTime:
+          type: string
+          format: date-time
+        toDateTime:
+          type: string
+          format: date-time
+      xml:
+        name: event
