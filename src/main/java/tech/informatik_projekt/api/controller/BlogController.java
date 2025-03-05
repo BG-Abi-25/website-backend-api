@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import tech.informatik_projekt.api.models.BlogPost;
-import tech.informatik_projekt.api.repositories.BlogPostRepository;
+import tech.informatik_projekt.api.model.BlogPost;
+import tech.informatik_projekt.api.repository.BlogPostRepository;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class BlogController {
         if (blogPosts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(blogPosts, HttpStatus.OK);
+        return ResponseEntity.ok(blogPosts);
     }
 
     @GetMapping("/v1/blog/post/{postId}")
@@ -35,8 +35,8 @@ public class BlogController {
         if (blogPost == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        System.out.println("Returning blog post: " + blogPost);
-        return new ResponseEntity<>(blogPost, HttpStatus.OK);
+        System.out.println("Returning blog post: " + blogPost.getTitle());
+        return ResponseEntity.ok(blogPost);
     }
 
 }
