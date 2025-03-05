@@ -3,7 +3,9 @@ spring:
     name: API
   data:
     mongodb:
-      uri: ${MONGO_URI}
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
       username: ${MONGO_USERNAME}
       password: ${MONGO_PASSWORD}
       database: website
+      authentication-database: website

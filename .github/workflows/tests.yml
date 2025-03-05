@@ -15,7 +15,8 @@ jobs:
     name: Test Project
     runs-on: ubuntu-latest
     env:
-      MONGO_URI: ${{ secrets.MONGO_URI }}
+      MONGO_HOST: ${{ secrets.MONGO_HOST }}
+      MONGO_PORT: ${{ secrets.MONGO_PORT }}
       MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
       MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 
