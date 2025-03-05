@@ -29,19 +29,19 @@ paths:
           description: No blog posts found
 
   /blog/post/{postId}:
-    summary: Get a specific blog post
-    description: Retrieve a specific blog post by its ID
-    parameters:
-      - name: id
-        in: path
-        description: The corresponding ID of the blog post
-        required: true
-        schema:
-          type: integer
-          format: int64
     get:
       tags:
         - blog
+      summary: Get a specific blog post
+      description: Retrieve a specific blog post by its ID
+      parameters:
+        - name: postId
+          in: path
+          description: The corresponding ID of the blog post
+          required: true
+          schema:
+            type: integer
+            format: int64
       responses:
         "200":
           description: OK
@@ -53,6 +53,57 @@ paths:
           description: Invalid ID supplied
         "404":
           description: Blog post not found
+
+  /calendar/event:
+    get:
+      tags:
+        - calendar
+      summary: Get all events
+      description: Retrieve a list of all events
+      parameters:
+        - name: upcoming-only
+          in: query
+          description: Only retrieve upcoming events
+          required: false
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+        "404":
+          description: No calendar events found
+
+  /calendar/event/{eventId}:
+    get:
+      tags:
+        - calendar
+      summary: Get a specific event
+      description: Retrieve a specific event by its ID
+      parameters:
+        - name: eventId
+          in: path
+          description: The corresponding ID of the event
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Event not found
 
 components:
   schemas:
@@ -74,7 +125,7 @@ components:
           type: string
           description: Blog Post Author
           example: John Pork
-        dateCreated:
+        creationDate:
           type: string
           format: date-time
         imageUrl:
