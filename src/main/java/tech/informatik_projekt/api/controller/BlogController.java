@@ -3,10 +3,7 @@ package tech.informatik_projekt.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.informatik_projekt.api.model.BlogPost;
 import tech.informatik_projekt.api.repository.BlogPostRepository;
 
@@ -22,6 +19,7 @@ public class BlogController {
     @Autowired
     private BlogPostRepository blogPostRepository;
 
+    @CrossOrigin
     @GetMapping("/post")
     public ResponseEntity<List<BlogPost>> getBlogPosts() {
         List<BlogPost> blogPosts = blogPostRepository.findAll();
@@ -31,6 +29,7 @@ public class BlogController {
         return ResponseEntity.ok(blogPosts);
     }
 
+    @CrossOrigin
     @GetMapping("/post/{postId}")
     public ResponseEntity<BlogPost> getBlogPostById(@PathVariable int postId) {
         BlogPost blogPost = blogPostRepository.findById(postId);

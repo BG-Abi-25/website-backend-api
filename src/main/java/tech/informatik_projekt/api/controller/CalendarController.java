@@ -3,10 +3,7 @@ package tech.informatik_projekt.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tech.informatik_projekt.api.model.Event;
 import tech.informatik_projekt.api.repository.EventRepository;
 
@@ -22,6 +19,7 @@ public class CalendarController {
     @Autowired
     private EventRepository eventRepository;
 
+    @CrossOrigin
     @GetMapping("/event")
     public ResponseEntity<List<Event>> getEvents() {
         List<Event> events = eventRepository.findAll();
@@ -31,6 +29,7 @@ public class CalendarController {
         return ResponseEntity.ok(events);
     }
 
+    @CrossOrigin
     @GetMapping("/event/{eventId}")
     public ResponseEntity<Event> getEventById(@PathVariable int eventId) {
         Event event = eventRepository.findById(eventId);
