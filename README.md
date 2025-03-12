@@ -2,6 +2,10 @@
 
 Die Backend-API der Website, die im Zuge des Projektes im Informatik-LK des Abitur-Jahrgangs 2025 am Burg-Gymnasium Schorndorf entwickelt wird.
 
+## ⚠️ Archiviert ⚠️
+
+Dieses Projekt wurde archiviert und wird nicht weiterentwickelt.
+
 ## Dokumentation
 
 Diese API verfügt über eine Dokumentation, diese ist unter [`api-docs.informatik-projekt.tech`](https://api-docs.informatik-projekt.tech) zu finden.
